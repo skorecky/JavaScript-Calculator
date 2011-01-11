@@ -36,7 +36,7 @@
         if($(this).val() === "C") {
           $("#display").val("");
         } else if($(this).val() === "=") {
-          $("#display").val(eval(currentDisplay));
+          $("#display").val(eval(escape(currentDisplay)));
         } else {
           $("#display").val(currentDisplay+buttonValue);
         }

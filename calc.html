@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+	<meta name="author" content="Stephen Korecky">
+	<style type="text/css" media="screen">
+	  #display {
+	    border:1px solid #CCC;
+	    color:#333;
+	    font-size:18px;
+	    padding:4px;
+	  }
+	  button {
+	    border:none;
+	    font-size:16px;
+	    font-weight:bold;
+	    padding:10px 20px;
+	    width:50px;
+	  }
+	  #clear {
+	    background:#000;
+	    color:#FFF;
+	  }
+	  
+	  #equals {
+	    background:#FF5F00;
+	  }
+	</style>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+    $(function(){
+      $("button").click(function(){
+        var buttonValue = $(this).val();
+        var currentDisplay = $("#display").val();
+        if($(this).val() === "C") {
+          $("#display").val("");
+        } else if($(this).val() === "=") {
+          $("#display").val(eval(currentDisplay));
+        } else {
+          $("#display").val(currentDisplay+buttonValue);
+        }
+      })
+    });
+	</script>
+</head>
+<body>
+  <div id="calculator">
+    <table border="0">
+      <tr>
+        <td colspan="4"><input type="text" name="display" value="" id="display"/></td>
+      </tr>
+      <tr>
+        <td><button value="7" type="button">7</button></td>
+        <td><button value="8" type="button">8</button></td>
+        <td><button value="9" type="button">9</button></td>
+        <td><button value="/" type="button">/</button></td>
+      </tr>
+      <tr>
+        <td><button value="4" type="button">4</button></td>
+        <td><button value="5" type="button">5</button></td>
+        <td><button value="6" type="button">6</button></td>
+        <td><button value="*" type="button">*</button></td>
+      </tr>
+      <tr>
+        <td><button value="1" type="button">1</button></td>
+        <td><button value="2" type="button">2</button></td>
+        <td><button value="3" type="button">3</button></td>
+        <td><button value="-" type="button">-</button></td>
+      </tr>
+      <tr>
+        <td><button id="clear" value="C" type="button">C</button></td>
+        <td><button value="0" type="button">0</button></td>
+        <td><button id="equals" value="=" type="button">=</button></td>
+        <td><button value="+" type="button">+</button></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

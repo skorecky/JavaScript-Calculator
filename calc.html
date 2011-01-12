@@ -6,6 +6,7 @@
 	<meta name="author" content="Stephen Korecky">
 	<style type="text/css" media="screen">
 	  body {
+	    background:#111 url("background.png") 0 0 repeat;
 	    font:normal 62.5%/1.5 'lucida grande', tahoma, sans-serif;
 	  }
 	  a {
@@ -17,10 +18,19 @@
 	  a:hover {
 	    color:#195DA0;
 	  }
+	  h1 {
+	    color:#FFF;
+	    font-size:36px;
+	    margin:50px;
+	    text-align:center;
+	  }
 	  #calculator {
-      background:#111;
-      -webkit-box-shadow:0 0 10px rgba(0,0,0,0.9);
+      background: #C6C6C6; /* old browsers */
+      background: -moz-linear-gradient(top, #C6C6C6 0%, #9B9B9B 100%); /* firefox */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6C6C6), color-stop(100%,#9B9B9B)); /* webkit */
+      -webkit-box-shadow:0 0 20px rgba(0,0,0,1);
       border-radius:5px;
+      margin:0 auto;
       padding:10px;
 	    width:300px;
 	  }
@@ -28,8 +38,9 @@
 	    background: #212121; /* old browsers */
       background: -moz-linear-gradient(top, #212121 50%, #111111 50%); /* firefox */
       background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#212121), color-stop(50%,#111111)); /* webkit */
-	    border:1px solid rgba(255,255,255,0.2);
+	    border:1px solid rgba(0,0,0,0.5);
 	    border-radius:3px;
+	    -webkit-box-shadow:0 1px 0 rgba(255,255,255,0.3);
 	    color:#FFF;
 	    font-size:24px;
 	    padding:4px;
@@ -40,8 +51,9 @@
 	    background: #444444; /* old browsers */
       background: -moz-linear-gradient(top, #444444 0%, #333333 100%); /* firefox */
       background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#444444), color-stop(100%,#333333)); /* webkit */
-	    border:1px solid rgba(255,255,255,0.5);
+	    border:1px solid rgba(0,0,0,0.5);
 	    border-radius:3px;
+	    -webkit-box-shadow:0 1px 0 rgba(255,255,255,0.3);
 	    color:#FFF;
 	    cursor:pointer;
 	    font-size:16px;
@@ -57,6 +69,7 @@
 	    background: #888888; /* old browsers */
       background: -moz-linear-gradient(top, #888888 0%, #777777 100%); /* firefox */
       background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#888888), color-stop(100%,#777777)); /* webkit */
+      border:1px solid rgba(0,0,0,0.3);
       text-shadow:-1px -1px 0 rgba(0,0,0,0.4);
 	  }
 	  
@@ -155,6 +168,7 @@
 	</script>
 </head>
 <body>
+  <h1>JavaScript Calculator</h1>
   <div id="calculator">
     <table border="0">
       <tr>

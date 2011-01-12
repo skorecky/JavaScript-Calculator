@@ -2,30 +2,75 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>untitled</title>
+	<title>JavaScript Calculator</title>
 	<meta name="author" content="Stephen Korecky">
 	<style type="text/css" media="screen">
-	  #display {
-	    border:1px solid #CCC;
+	  body {
+	    font:normal 62.5%/1.5 'lucida grande', tahoma, sans-serif;
+	  }
+	  a {
 	    color:#333;
-	    font-size:18px;
+	    padding:0 5px;
+	    text-decoration:none;
+	    text-shadow:0 1px 0 #FFF;
+	  }
+	  a:hover {
+	    color:#195DA0;
+	  }
+	  #calculator {
+      background:#111;
+      -webkit-box-shadow:0 0 10px rgba(0,0,0,0.9);
+      border-radius:5px;
+      padding:10px;
+	    width:300px;
+	  }
+	  #display {
+	    background: #212121; /* old browsers */
+      background: -moz-linear-gradient(top, #212121 50%, #111111 50%); /* firefox */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#212121), color-stop(50%,#111111)); /* webkit */
+	    border:1px solid rgba(255,255,255,0.2);
+	    border-radius:3px;
+	    color:#FFF;
+	    font-size:24px;
 	    padding:4px;
+	    text-shadow:-1px -1px 0 rgba(0,0,0,1);
+	    width:284px;
 	  }
 	  button {
-	    border:none;
+	    background: #444444; /* old browsers */
+      background: -moz-linear-gradient(top, #444444 0%, #333333 100%); /* firefox */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#444444), color-stop(100%,#333333)); /* webkit */
+	    border:1px solid rgba(255,255,255,0.5);
+	    border-radius:3px;
+	    color:#FFF;
 	    cursor:pointer;
 	    font-size:16px;
 	    font-weight:bold;
-	    padding:10px 20px;
-	    width:50px;
+	    padding:10px 25px;
+	    text-shadow:-1px -1px 0 rgba(0,0,0,1);
+      width:70px;
 	  }
-	  #clear {
-	    background:#000;
-	    color:#FFF;
+	  button:active {
+	    -webkit-box-shadow:inset 0 0 20px #000000;
+	  }
+	  .action_key {
+	    background: #888888; /* old browsers */
+      background: -moz-linear-gradient(top, #888888 0%, #777777 100%); /* firefox */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#888888), color-stop(100%,#777777)); /* webkit */
+      text-shadow:-1px -1px 0 rgba(0,0,0,0.4);
 	  }
 	  
 	  #equals {
-	    background:#FF5F00;
+	    background: #EA7D00; /* old browsers */
+      background: -moz-linear-gradient(top, #EA7D00 0%, #D86F00 100%); /* firefox */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EA7D00), color-stop(100%,#D86F00)); /* webkit */
+      text-shadow:-1px -1px 0 rgba(0,0,0,0.4);
+	  }
+	  p {
+	    background: #E0E0E0; /* old browsers */
+	    border-radius:3px;
+	    padding:5px;
+	    text-align:center;
 	  }
 	</style>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
@@ -36,6 +81,7 @@
         updateCalculator($(this).val());
       })
        $(document).keypress(function(e){
+         console.log(e.which)
           var keyID = e.which
           switch(keyID)
           {
@@ -81,6 +127,9 @@
             case 45:
               var keyValue = "-"
               break;
+            case 42:
+              var keyValue = "*"
+              break;
             case 47:
               var keyValue = "/"
               break;
@@ -115,27 +164,32 @@
         <td><button value="7" type="button">7</button></td>
         <td><button value="8" type="button">8</button></td>
         <td><button value="9" type="button">9</button></td>
-        <td><button value="/" type="button">/</button></td>
+        <td><button class="action_key"  value="/" type="button">/</button></td>
       </tr>
       <tr>
         <td><button value="4" type="button">4</button></td>
         <td><button value="5" type="button">5</button></td>
         <td><button value="6" type="button">6</button></td>
-        <td><button value="*" type="button">*</button></td>
+        <td><button class="action_key"  value="*" type="button">*</button></td>
       </tr>
       <tr>
         <td><button value="1" type="button">1</button></td>
         <td><button value="2" type="button">2</button></td>
         <td><button value="3" type="button">3</button></td>
-        <td><button value="-" type="button">-</button></td>
+        <td><button class="action_key"  value="-" type="button">-</button></td>
       </tr>
       <tr>
-        <td><button id="clear" value="C" type="button">C</button></td>
+        <td><button class="action_key" id="clear" value="C" type="button">C</button></td>
         <td><button value="0" type="button">0</button></td>
         <td><button id="equals" value="=" type="button">=</button></td>
-        <td><button value="+" type="button">+</button></td>
+        <td><button class="action_key" value="+" type="button">+</button></td>
       </tr>
     </table>
+    <p>
+      <a href="https://github.com/skorecky/js_calculator">Clone on GitHub</a>
+      |
+      <a href="http://stephenkorecky">Made By Stephen Korecky</a>
+    </p>
   </div>
 </body>
 </html>

@@ -96,11 +96,13 @@
       $("button").click(function(){
         updateCalculator($(this).val());
       })
-       $(document).keypress(function(e){
+       window.onkeydown = function(e) {
+       // $(document).keypress(function(e){
          if($("#display").is(":focus")) {
            $("#display").blur();
          }
           var keyID = e.which;
+          console.log(e.keyCode)
           switch(keyID)
           {
             case 49:
@@ -139,16 +141,16 @@
             case 13:
               var keyValue = "="
               break;
-            case 43:
+            case 187:
               var keyValue = "+"
               break;
-            case 45:
+            case 189:
               var keyValue = "-"
               break;
-            case 42:
+            case 88:
               var keyValue = "×"
               break;
-            case 47:
+            case 191:
               var keyValue = "÷"
               break;
             case 8:
@@ -157,9 +159,18 @@
             case 27:
               var keyValue = "C"
               break;
+            case 67:
+              var keyValue = "C"
+              break;
+            case 91:
+              var keyValue = "C"
+              break;
           }
           updateCalculator(keyValue);
-    	  });
+          if((e.which === 8) || (e.which === 65)){
+            return false;
+          }
+    	  };
     });
     
     function updateCalculator(element){

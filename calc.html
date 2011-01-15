@@ -6,7 +6,7 @@
 	<meta name="author" content="Stephen Korecky">
 	<style type="text/css" media="screen">
 	  body {
-	    background:#111 url("background.png") 0 0 repeat;
+	    background:#222 url("background.png") 0 0 repeat;
 	    font:normal 62.5%/1.5 'lucida grande', tahoma, sans-serif;
 	  }
 	  a {
@@ -23,12 +23,13 @@
 	    font-size:36px;
 	    margin:50px;
 	    text-align:center;
+	    text-shadow:1px 1px 5px #000;
 	  }
 	  #calculator {
       background: #C6C6C6; /* old browsers */
       background: -moz-linear-gradient(top, #C6C6C6 0%, #9B9B9B 100%); /* firefox */
       background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6C6C6), color-stop(100%,#9B9B9B)); /* webkit */
-      -webkit-box-shadow:0 0 20px rgba(0,0,0,1);
+      -webkit-box-shadow:0 1px 50px rgba(0,0,0,0.8);
       border-radius:5px;
       margin:0 auto;
       padding:10px;
@@ -96,7 +97,10 @@
         updateCalculator($(this).val());
       })
        $(document).keypress(function(e){
-          var keyID = e.which
+         if($("#display").is(":focus")) {
+           $("#display").blur();
+         }
+          var keyID = e.which;
           switch(keyID)
           {
             case 49:
@@ -142,12 +146,15 @@
               var keyValue = "-"
               break;
             case 42:
-              var keyValue = "*"
+              var keyValue = "×"
               break;
             case 47:
-              var keyValue = "/"
+              var keyValue = "÷"
               break;
             case 8:
+              var keyValue = "C"
+              break;
+            case 27:
               var keyValue = "C"
               break;
           }
@@ -163,7 +170,7 @@
       if(element === "C") {
         $("#display").val("");
       } else if(element === "=") {
-        $("#display").val(eval(escape(currentDisplay)));
+        $("#display").val(eval(escape(currentDisplay.replace(/[×]/g,'*').replace(/[÷]/g,'/'))));
       } else if(element != undefined) {
         $("#display").val(currentDisplay+element);
       }
@@ -181,29 +188,29 @@
         <td><button value="7" type="button">7</button></td>
         <td><button value="8" type="button">8</button></td>
         <td><button value="9" type="button">9</button></td>
-        <td><button class="action_key"  value="/" type="button">/</button></td>
+        <td><button class="action_key"  value="÷" type="button">&divide;</button></td>
       </tr>
       <tr>
         <td><button value="4" type="button">4</button></td>
         <td><button value="5" type="button">5</button></td>
         <td><button value="6" type="button">6</button></td>
-        <td><button class="action_key"  value="*" type="button">*</button></td>
+        <td><button class="action_key"  value="×" type="button">&times;</button></td>
       </tr>
       <tr>
         <td><button value="1" type="button">1</button></td>
         <td><button value="2" type="button">2</button></td>
         <td><button value="3" type="button">3</button></td>
-        <td><button class="action_key"  value="-" type="button">-</button></td>
+        <td><button class="action_key"  value="-" type="button">&#8722;</button></td>
       </tr>
       <tr>
         <td><button class="action_key" id="clear" value="C" type="button">C</button></td>
         <td><button value="0" type="button">0</button></td>
         <td><button id="equals" value="=" type="button">=</button></td>
-        <td><button class="action_key" value="+" type="button">+</button></td>
+        <td><button class="action_key" value="+" type="button">&#43;</button></td>
       </tr>
     </table>
     <p>
-      <a href="https://github.com/skorecky/js_calculator">Clone on GitHub</a>
+      <a href="https://github.com/skorecky/js_calculator">Fork on GitHub</a>
       |
       <a href="http://stephenkorecky.com">Made By Stephen Korecky</a>
     </p>

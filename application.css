@@ -68,12 +68,15 @@ button:active {
   border:1px solid rgba(0,0,0,0.3);
   text-shadow:-1px -1px 0 rgba(0,0,0,0.4);
 }
-
+#zero {
+  width:144px;
+}
 #equals {
   background: #EA7D00; /* old browsers */
   background: -moz-linear-gradient(top, #EA7D00 0%, #D86F00 100%); /* firefox */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EA7D00), color-stop(100%,#D86F00)); /* webkit */
   border:1px solid rgba(0,0,0,0.3);
+  height:98px;
   text-shadow:-1px -1px 0 rgba(0,0,0,0.4);
 }
 p {

@@ -1,6 +1,15 @@
 $(function(){
   $("button").click(function(){
-    updateCalculator($(this).val());
+    if($(this).attr("id") == "plusmin"){
+      var currentDisplay = $("#display").val();
+      if($("#display").val().match(/[-]/) == "-"){
+        $("#display").val(currentDisplay.replace(/[-]/,""))
+      } else {
+        $("#display").val("-"+currentDisplay)
+      }
+    } else {
+      updateCalculator($(this).val());
+    }
   })
    window.onkeydown = function(e) {
      if($("#display").is(":focus")) {
@@ -90,6 +99,9 @@ function updateCalculator(element){
   } else if(element != undefined) {
     if($("#display").val() === "0"){
       $("#display").val("")
+      var currentDisplay = $("#display").val();
+    } else if ($("#display").val() === "-0"){
+      $("#display").val("-")
       var currentDisplay = $("#display").val();
     }
     $("#display").val(currentDisplay+element);

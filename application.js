@@ -88,24 +88,31 @@ window.onload = function(){
 };
 
 function updateCalculator(element){
-  var currentDisplay = $("#display").val();
-  var elementValue = element
-  $("button[value="+element+"]").addClass("pressed");
-  setTimeout("$('.pressed').removeClass('pressed')", 200);
+  var currentDisplay = display.value;
+  var elementValue = element;
+  var inputs = document.getElementsByTagName("button");
+  for (var i = 0; i < inputs.length; i ++) {
+    if (inputs[i].value == element) {
+      inputs[i].className = "pressed";
+    }
+  }
+  if (document.getElementsByClassName('pressed').length === 1) {
+    setTimeout("document.getElementsByClassName('pressed')[0].className = ''", 200);
+  };
   if(element === "C") {
-    $("#display").val("0");
+    display.value = "0";
   } else if(element === "=") {
     var total = eval(escape(currentDisplay.replace(/[×]/g,'*').replace(/[÷]/g,'/').replace(/[,]/g,'')))
-    $("#display").val(addCommas(total));
+    display.value = addCommas(total);
   } else if(element != undefined) {
-    if($("#display").val() === "0"){
-      $("#display").val("")
-      var currentDisplay = $("#display").val();
-    } else if ($("#display").val() === "-0"){
-      $("#display").val("-")
-      var currentDisplay = $("#display").val();
+    if(display.value === "0"){
+      display.value = "";
+      var currentDisplay = display.value;
+    } else if (display.value === "-0"){
+      display.value = "-";
+      var currentDisplay = display.value;
     }
-    $("#display").val(currentDisplay+element);
+    display.value = currentDisplay+element;
   }
 }
 
@@ -120,3 +127,10 @@ function addCommas(nStr) {
   }
   return x1 + x2;
 }
+
+// var inputs = document.getElementsByTagName("button");
+// for (var i = 0; i < inputs.length; i ++) {
+//   if (inputs[i].value == 'C') {
+//     return inputs[i];
+//   }
+// }

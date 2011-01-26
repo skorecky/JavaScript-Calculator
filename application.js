@@ -1,19 +1,20 @@
-$(function(){
+window.onload = function(){
+  var display = document.getElementById('display');
   $("button").click(function(){
     if($(this).attr("id") == "plusmin"){
-      var currentDisplay = $("#display").val();
-      if($("#display").val().match(/[-]/) == "-"){
-        $("#display").val(currentDisplay.replace(/[-]/,""))
+      var currentDisplay = display.value
+      if(display.value.match(/[-]/) == "-"){
+        display.value = currentDisplay.replace(/[-]/,"")
       } else {
-        $("#display").val("-"+currentDisplay)
+        display.value = "-"+currentDisplay
       }
     } else {
       updateCalculator($(this).val());
     }
   })
    window.onkeydown = function(e) {
-     if($("#display").is(":focus")) {
-       $("#display").blur();
+     if(document.activeElement === display) {
+       display.blur();
      }
       var keyID = e.which;
       switch(keyID)
@@ -84,7 +85,7 @@ $(function(){
         return false;
       }
 	  };
-});
+};
 
 function updateCalculator(element){
   var currentDisplay = $("#display").val();

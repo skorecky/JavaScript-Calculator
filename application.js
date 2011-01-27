@@ -96,11 +96,12 @@ function updateCalculator(element){
   var inputs = document.getElementsByTagName("button");
   for (var i = 0; i < inputs.length; i ++) {
     if (inputs[i].value == element) {
-      inputs[i].className = "pressed";
+      var currentClassName = inputs[i].className
+      inputs[i].className = currentClassName + " pressed";
     }
   }
   if (document.getElementsByClassName('pressed').length === 1) {
-    setTimeout("document.getElementsByClassName('pressed')[0].className = ''", 200);
+    setTimeout("var pressedButton = document.getElementsByClassName('pressed')[0];var currentClassName = pressedButton.className.replace(/pressed/,'');pressedButton.className = currentClassName", 200);
   };
   if(element === "C") {
     display.value = "0";
@@ -130,10 +131,3 @@ function addCommas(nStr) {
   }
   return x1 + x2;
 }
-
-// var inputs = document.getElementsByTagName("button");
-// for (var i = 0; i < inputs.length; i ++) {
-//   if (inputs[i].value == 'C') {
-//     return inputs[i];
-//   }
-// }

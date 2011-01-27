@@ -1,18 +1,21 @@
 window.onload = function(){
   var display = document.getElementById('display');
-  $("button").click(function(){
-    if($(this).attr("id") == "plusmin"){
-      var currentDisplay = display.value
-      if(display.value.match(/[-]/) == "-"){
-        display.value = currentDisplay.replace(/[-]/,"")
+  var buttons = document.getElementsByTagName("button");
+  for (var i = 0; i < buttons.length; i ++){
+    buttons[i].onclick = function(){
+      if(this.id == "plusmin"){
+        var currentDisplay = display.value;
+        if(display.value.match(/[-]/) == "-"){
+          display.value = currentDisplay.replace(/[-]/,"");
+        } else {
+          display.value = "-"+currentDisplay;
+        }
       } else {
-        display.value = "-"+currentDisplay
+        updateCalculator(this.value);
       }
-    } else {
-      updateCalculator($(this).val());
     }
-  })
-   window.onkeydown = function(e) {
+  }
+   window.onkeydown = function(e){
      if(document.activeElement === display) {
        display.blur();
      }

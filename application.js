@@ -97,11 +97,11 @@ function updateCalculator(element){
   for (var i = 0; i < inputs.length; i ++) {
     if (inputs[i].value == element) {
       var currentClassName = inputs[i].className
-      inputs[i].className = currentClassName + " pressed";
+      inputs[i].className = "pressed " + currentClassName;
     }
   }
-  if (document.getElementsByClassName('pressed').length === 1) {
-    setTimeout("var pressedButton = document.getElementsByClassName('pressed')[0];var currentClassName = pressedButton.className.replace(/pressed/,'');pressedButton.className = currentClassName", 200);
+  if (document.getElementsByClassName('pressed').length >= 1) {
+    setTimeout("var pressedButton = document.getElementsByClassName('pressed')[0];var currentClassName = pressedButton.className.replace(/pressed/,'');pressedButton.className = currentClassName", 100);
   };
   if(element === "C") {
     display.value = "0";

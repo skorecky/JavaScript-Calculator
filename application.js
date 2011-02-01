@@ -93,6 +93,7 @@ window.onload = function(){
 function updateCalculator(element){
   var currentDisplay = display.value;
   var elementValue = element;
+  var lastChar = currentDisplay.match(/.$/);
   var inputs = document.getElementsByTagName("button");
   for (var i = 0; i < inputs.length; i ++) {
     if (inputs[i].value == element) {
@@ -102,6 +103,9 @@ function updateCalculator(element){
   }
   if (document.getElementsByClassName('pressed').length >= 1) {
     setTimeout("var pressedButton = document.getElementsByClassName('pressed')[0];var currentClassName = pressedButton.className.replace(/pressed/,'');pressedButton.className = currentClassName", 100);
+  };
+  if(lastChar == "+" || lastChar == "-" || lastChar == "÷" || lastChar == "×"){
+    currentDisplay = currentDisplay.replace(/.$/,"");
   };
   if(element === "C") {
     display.value = "0";

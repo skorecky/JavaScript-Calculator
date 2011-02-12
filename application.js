@@ -1,6 +1,9 @@
+// Window.onload is probably no needed since we load the JS at the bottom, 
+// but this will insure the document is ready before it loads the js
 window.onload = function(){
   var display = document.getElementById('display');
   var buttons = document.getElementsByTagName("button");
+  // we need to loop through the calcular buttons and return the one that was clicked.
   for (var i = 0; i < buttons.length; i ++){
     buttons[i].onclick = function(){
       if(this.id == "plusmin"){
@@ -15,6 +18,8 @@ window.onload = function(){
       }
     }
   }
+  
+  // Here we're setting up our key bindings to control the calculator via keyboard
    window.onkeydown = function(e){
      if(document.activeElement === display) {
        display.blur();
@@ -90,10 +95,11 @@ window.onload = function(){
 	  };
 };
 
+// this is where the magic happens.
 function updateCalculator(element){
   var currentDisplay = display.value;
   var elementValue = element;
-  var lastChar = currentDisplay.match(/.$/);
+  var lastChar = currentDisplay.match(/.$/)[0];
   var inputs = document.getElementsByTagName("button");
   for (var i = 0; i < inputs.length; i ++) {
     if (inputs[i].value == element) {
@@ -104,12 +110,13 @@ function updateCalculator(element){
   if (document.getElementsByClassName('pressed').length >= 1) {
     setTimeout("var pressedButton = document.getElementsByClassName('pressed')[0];var currentClassName = pressedButton.className.replace(/pressed/,'');pressedButton.className = currentClassName", 100);
   };
-  if(lastChar == "+" || lastChar == "-" || lastChar == "÷" || lastChar == "×"){
-    currentDisplay = currentDisplay.replace(/.$/,"");
-  };
+  // if(lastChar === "+" || lastChar === "-" || lastChar === "÷" || lastChar === "×"){
+  //   // currentDisplay = currentDisplay.replace(/.$/,"");
+  // };
   if(element === "C") {
     display.value = "0";
   } else if(element === "=") {
+    // don't yell at me for using eval. This is probably one of the few proper places to use it.
     var total = eval(escape(currentDisplay.replace(/[×]/g,'*').replace(/[÷]/g,'/').replace(/[,]/g,'')))
     display.value = addCommas(total);
   } else if(element != undefined) {

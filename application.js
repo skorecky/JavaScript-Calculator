@@ -19,7 +19,7 @@ function addCommas(nStr) {
 function updateCalculator(element){
   var currentClassName;
   var elementValue = element;
-  var lastChar = currentDisplay.match(/.$/)[0];
+  // var lastChar = currentDisplay.match(/.$/)[0];
   var inputs = document.getElementsByTagName("button");
   currentDisplay = display.value;
   for (var i = 0; i < inputs.length; i ++) {

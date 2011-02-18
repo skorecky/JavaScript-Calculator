@@ -43,7 +43,7 @@ function updateCalculator(element){
   } else if(element === "=") {
     // don't yell at me for using eval. This is probably one of the few proper places to use it.
     var total = eval(currentDisplay.replace(/[×]/g,'*').replace(/[÷]/g,'/').replace(/[,]/g,''));
-    if(total === "Infinity"){
+    if(total === Infinity){
       display.value = "You Suck";
       return false;
     }

@@ -108,7 +108,12 @@ function updateCalculator(element){
     }
   }
   if (document.getElementsByClassName('pressed').length >= 1) {
-    setTimeout("var pressedButton = document.getElementsByClassName('pressed')[0];var currentClassName = pressedButton.className.replace(/pressed/,'');pressedButton.className = currentClassName", 100);
+    setTimeout(function () {
+      var pressedButton = document.getElementsByClassName('pressed')[0]; 
+      currentClassName = pressedButton.className.replace(/pressed/,'');
+      pressedButton.className = currentClassName;
+    }, 100);
+    
   };
   // if(lastChar === "+" || lastChar === "-" || lastChar === "÷" || lastChar === "×"){
   //   // currentDisplay = currentDisplay.replace(/.$/,"");
@@ -118,6 +123,10 @@ function updateCalculator(element){
   } else if(element === "=") {
     // don't yell at me for using eval. This is probably one of the few proper places to use it.
     var total = eval(escape(currentDisplay.replace(/[×]/g,'*').replace(/[÷]/g,'/').replace(/[,]/g,'')))
+    if(total == "Infinity"){
+      display.value = "You Suck"
+      return false;
+    }
     display.value = addCommas(total);
   } else if(element != undefined) {
     if(display.value === "0"){

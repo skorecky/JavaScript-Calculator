@@ -62,9 +62,9 @@ function updateCalculator(element){
 
 window.onload = function(){
   var buildClickHandler = function () {
+    currentDisplay = display.value;
     return function(){
       if(this.id === "plusmin"){
-        currentDisplay = display.value;
         if(display.value.match(/[\-]/) === "-"){
           display.value = currentDisplay.replace(/[\-]/,"");
         } else {

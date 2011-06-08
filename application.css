@@ -53,10 +53,19 @@ button {
   cursor:pointer;
   font-size:20px;
   font-weight:bold;
-  padding:10px 25px;
+  padding:0;
   text-shadow:-1px -1px 0 rgba(0,0,0,1);
   width:70px;
 }
+
+button span {
+  border:solid rgba(255,255,255,0.2);
+  border-radius:2px;
+  border-width:1px 0 0 1px;
+  display:block;
+  padding:10px 25px;
+}
+
 button.pressed,
 button:active {
   -webkit-box-shadow:inset 0 2px 20px #000000;
@@ -79,6 +88,11 @@ button:active {
   height:98px;
   text-shadow:-1px -1px 0 rgba(0,0,0,0.4);
 }
+
+#equals  span {
+  padding:37px 25px;
+}
+
 p {
   background: #E0E0E0; /* old browsers */
   border-radius:3px;
